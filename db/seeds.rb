@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+todo = Todos.create(title:"todo01", descrip:"this is todo01")
+Items.create(name:"item01", todo_id:todo.id)
+

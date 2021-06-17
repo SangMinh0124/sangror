@@ -10,21 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_125530) do
+ActiveRecord::Schema.define(version: 2021_06_17_104835) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.integer "todoid"
-    t.boolean "cre_item"
+    t.integer "todo_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["todo_id"], name: "index_items_on_todo_id"
   end
 
   create_table "todos", force: :cascade do |t|
     t.string "title"
-    t.string "cre_todo"
+    t.text "descrip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "items", "todos"
 end

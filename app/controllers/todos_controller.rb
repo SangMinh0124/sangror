@@ -3,26 +3,17 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+   @todos = Todo.all
   end
 
-  # GET /todos/1 or /todos/1.json
+  # GET /todos
   def show
+      @todos = Todo.find(params[:id])
   end
 
-  # GET /todos/new
-  def new
-    @todo = Todo.new
-  end
-
-  # GET /todos/1/edit
-  def edit
-  end
-
-  # POST /todos or /todos.json
+  # POST /todos
   def create
-    @todo = Todo.new(todo_params)
-
+    @todo = Todo.create!(todo_params)
     respond_to do |format|
       if @todo.save
         format.html { redirect_to @todo, notice: "Todo was successfully created." }
@@ -34,7 +25,8 @@ class TodosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /todos/1 or /todos/1.json
+
+  #PATCH/PUT /todos/1 or /todos/1.json
   def update
     respond_to do |format|
       if @todo.update(todo_params)
@@ -45,6 +37,15 @@ class TodosController < ApplicationController
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /todos/new
+  def new
+    @todo = Todo.new
+  end
+
+  # GET /todos/1/edit
+  def edit
   end
 
   # DELETE /todos/1 or /todos/1.json

@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-todo = Todos.create(title:"todo01", descrip:"this is todo01")
-Items.create(name:"item01", todo_id:todo.id)
+todo = Todos.create([{title:"todo01", descrip:"this is todo01"}, 
+					 {title:"todo02", descrip:"this is todo02"}])
+Items.create([{name:"item01", todo:todo.find(params[:id])}, 
+			  {name:"item02", todo:todo.find(params[:id])}])
 

@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-todo = Todos.create([{title:"todo01", descrip:"this is todo01"}, 
-					 {title:"todo02", descrip:"this is todo02"}])
-Items.create([{name:"item01", todo:todo.find(params[:id])}, 
-			  {name:"item02", todo:todo.find(params[:id])}])
-
+10.times do
+  todo = Todo.create(title: Faker::Lorem.word, descrip: Faker::Lorem.word)
+  todo.items.create(name: Faker::Lorem.word)
+end

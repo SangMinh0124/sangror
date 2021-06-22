@@ -1,4 +1,4 @@
-class TodosController < ApplicationController
+class Api::V1::TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   # GET /todos or /todos.json
@@ -66,5 +66,9 @@ class TodosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def todo_params
       params.require(:todo).permit(:title, :descrip)
+    end
+
+    def serializer
+        TodoSerializer
     end
 end

@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::V1::ItemsController < ApplicationController
   before_action :set_todo
   before_action :set_todo_item, only: [:show, :update, :destroy]
   #before_action :set_item, only: %i[ show edit update destroy ]
@@ -74,5 +74,9 @@ class ItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:name, :todo_id)
+    end
+
+    def serializer
+        ItemSerializer
     end
 end

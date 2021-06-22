@@ -25,6 +25,7 @@ gem 'devise'
 gem 'jwt'
 gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'fast_jsonapi'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
